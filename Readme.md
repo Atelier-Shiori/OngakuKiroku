@@ -1,6 +1,6 @@
 # OngakuKiroku
 
-OngakuKiroku is an open source scrobbler for [Majoja](https://github.com/krateng/maloja), a self hosted music statistics server for macOS that allows you to scrobble what you are playing in Swinsian or iTunes/Music App. [Swinsian](https://swinsian.com) is an Advanced Music Player for Mac.
+OngakuKiroku is an open source scrobbler for [Maloja](https://github.com/krateng/maloja), a self hosted music statistics server for macOS that allows you to scrobble what you are playing in Swinsian or iTunes/Music App. [Swinsian](https://swinsian.com) is an Advanced Music Player for Mac.
 
 This program works on macOS El Capitan or later and requires Swinsian version >= 1.8.8 or Apple iTunes to work. Music.app support requires macOS 10.15 Catalina or later.
 

@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F85BC43820D08E1E00C58BD9 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F85BC43720D08E1E00C58BD9 /* dsa_pub.pem */; };
+		F85BC43A20D08E2C00C58BD9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F85BC43920D08E2C00C58BD9 /* Sparkle.framework */; };
+		F85BC43B20D08E7900C58BD9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F85BC43920D08E2C00C58BD9 /* Sparkle.framework */; };
+		F85BC43C20D08E7900C58BD9 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F85BC43920D08E2C00C58BD9 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F85D494620D0838300343699 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F85D494420D0837E00343699 /* PFAboutWindowController.m */; };
+		F85D494820D0838700343699 /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F85D494720D0838600343699 /* PFAboutWindow.xib */; };
+		F85D494A20D083CD00343699 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F85D494920D083CD00343699 /* Credits.rtf */; };
+		F85D494C20D0851600343699 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F85D494B20D0851600343699 /* EULA.rtf */; };
+		F87417FC20D0750700614654 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F87417FB20D0750700614654 /* AppDelegate.m */; };
+		F87417FE20D0750700614654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F87417FD20D0750700614654 /* Assets.xcassets */; };
+		F874180420D0750700614654 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F874180320D0750700614654 /* main.m */; };
+		F8EC907E20D30DA90086F719 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EC907D20D30DA90086F719 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		FF12F7A725CCA9AA002E74BE /* SharedHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF12F7A625CCA9AA002E74BE /* SharedHTTPManager.m */; };
+		FF12F7A825CCAD09002E74BE /* MSWeakTimer_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF12F77F25CC9FEE002E74BE /* MSWeakTimer_macOS.framework */; };
+		FF12F7A925CCAD09002E74BE /* MSWeakTimer_macOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF12F77F25CC9FEE002E74BE /* MSWeakTimer_macOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF621FB225CDB2D70068685A /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = FF621FB025CDB2D70068685A /* Log.m */; };
+		FF621FB525CDB4920068685A /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF621FB325CDB48B0068685A /* AFNetworking.framework */; };
+		FF621FB625CDB4920068685A /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF621FB325CDB48B0068685A /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF621FB925CDB4AA0068685A /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = FF621FB725CDB4AA0068685A /* NSString+HTMLtoNSAttributedString.m */; };
+		FF621FBA25CDB4FC0068685A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87417FF20D0750700614654 /* MainMenu.xib */; };
+		FF621FBD25CDB52A0068685A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF621FBC25CDB52A0068685A /* Info.plist */; };
+		FF621FC125CDBF3E0068685A /* GeneralPreferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF621FC025CDBF3E0068685A /* GeneralPreferenceView.xib */; };
+		FF621FC425CDC09F0068685A /* GeneralPreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF621FC325CDC09F0068685A /* GeneralPreferenceController.m */; };
+		FF621FC925CDC1710068685A /* NSBundle+LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FF621FC825CDC1710068685A /* NSBundle+LoginItem.m */; };
+		FF621FCA25CDC9700068685A /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF621FBE25CDBF340068685A /* MASPreferences.framework */; };
+		FF621FCB25CDC9700068685A /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF621FBE25CDBF340068685A /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF621FCC25CDC9720068685A /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF621FC525CDC12A0068685A /* SAMKeychain.framework */; };
+		FF621FCD25CDC9720068685A /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF621FC525CDC12A0068685A /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF621FD025CDCA220068685A /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = FF621FCF25CDCA220068685A /* SoftwareUpdatesPref.m */; };
+		FF621FD225CDCA290068685A /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF621FD125CDCA290068685A /* SoftwareUpdateView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F85D494220D07BE800343699 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F85BC43C20D08E7900C58BD9 /* Sparkle.framework in Embed Frameworks */,
+				FF621FB625CDB4920068685A /* AFNetworking.framework in Embed Frameworks */,
+				FF621FCD25CDC9720068685A /* SAMKeychain.framework in Embed Frameworks */,
+				FF12F7A925CCAD09002E74BE /* MSWeakTimer_macOS.framework in Embed Frameworks */,
+				FF621FCB25CDC9700068685A /* MASPreferences.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F85BC43720D08E1E00C58BD9 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		F85BC43920D08E2C00C58BD9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		F85D494420D0837E00343699 /* PFAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFAboutWindowController.m; sourceTree = "<group>"; };
+		F85D494520D0838000343699 /* PFAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFAboutWindowController.h; sourceTree = "<group>"; };
+		F85D494720D0838600343699 /* PFAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PFAboutWindow.xib; path = Ongakukiroku/PFAboutWindow.xib; sourceTree = SOURCE_ROOT; };
+		F85D494920D083CD00343699 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		F85D494B20D0851600343699 /* EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = EULA.rtf; sourceTree = "<group>"; };
+		F87417F720D0750700614654 /* OngakuKiroku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OngakuKiroku.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F87417FA20D0750700614654 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F87417FB20D0750700614654 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F87417FD20D0750700614654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F874180020D0750700614654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F874180320D0750700614654 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F874180520D0750700614654 /* iTunesDiscord.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iTunesDiscord.entitlements; sourceTree = "<group>"; };
+		F8EC907C20D30DA80086F719 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
+		F8EC907D20D30DA90086F719 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
+		FF12F77F25CC9FEE002E74BE /* MSWeakTimer_macOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MSWeakTimer_macOS.framework; sourceTree = "<group>"; };
+		FF12F7A525CCA9AA002E74BE /* SharedHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedHTTPManager.h; sourceTree = "<group>"; };
+		FF12F7A625CCA9AA002E74BE /* SharedHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedHTTPManager.m; sourceTree = "<group>"; };
+		FF621FB025CDB2D70068685A /* Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
+		FF621FB125CDB2D70068685A /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		FF621FB325CDB48B0068685A /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
+		FF621FB725CDB4AA0068685A /* NSString+HTMLtoNSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLtoNSAttributedString.m"; sourceTree = "<group>"; };
+		FF621FB825CDB4AA0068685A /* NSString+HTMLtoNSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLtoNSAttributedString.h"; sourceTree = "<group>"; };
+		FF621FBC25CDB52A0068685A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF621FBE25CDBF340068685A /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
+		FF621FC025CDBF3E0068685A /* GeneralPreferenceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferenceView.xib; sourceTree = "<group>"; };
+		FF621FC225CDC09F0068685A /* GeneralPreferenceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralPreferenceController.h; sourceTree = "<group>"; };
+		FF621FC325CDC09F0068685A /* GeneralPreferenceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneralPreferenceController.m; sourceTree = "<group>"; };
+		FF621FC525CDC12A0068685A /* SAMKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SAMKeychain.framework; sourceTree = "<group>"; };
+		FF621FC725CDC1710068685A /* NSBundle+LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LoginItem.h"; sourceTree = "<group>"; };
+		FF621FC825CDC1710068685A /* NSBundle+LoginItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LoginItem.m"; sourceTree = "<group>"; };
+		FF621FCE25CDCA220068685A /* SoftwareUpdatesPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdatesPref.h; sourceTree = "<group>"; };
+		FF621FCF25CDCA220068685A /* SoftwareUpdatesPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdatesPref.m; sourceTree = "<group>"; };
+		FF621FD125CDCA290068685A /* SoftwareUpdateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoftwareUpdateView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F87417F420D0750700614654 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F85BC43A20D08E2C00C58BD9 /* Sparkle.framework in Frameworks */,
+				FF621FB525CDB4920068685A /* AFNetworking.framework in Frameworks */,
+				FF12F7A825CCAD09002E74BE /* MSWeakTimer_macOS.framework in Frameworks */,
+				FF621FCA25CDC9700068685A /* MASPreferences.framework in Frameworks */,
+				FF621FCC25CDC9720068685A /* SAMKeychain.framework in Frameworks */,
+				F85BC43B20D08E7900C58BD9 /* Sparkle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F87417EE20D0750700614654 = {
+			isa = PBXGroup;
+			children = (
+				F87417F920D0750700614654 /* Ongakukiroku */,
+				F87417F820D0750700614654 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F87417F820D0750700614654 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F87417F720D0750700614654 /* OngakuKiroku.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F87417F920D0750700614654 /* Ongakukiroku */ = {
+			isa = PBXGroup;
+			children = (
+				F85D494720D0838600343699 /* PFAboutWindow.xib */,
+				F85D494520D0838000343699 /* PFAboutWindowController.h */,
+				F85D494420D0837E00343699 /* PFAboutWindowController.m */,
+				F87417FA20D0750700614654 /* AppDelegate.h */,
+				F87417FB20D0750700614654 /* AppDelegate.m */,
+				FF621FC025CDBF3E0068685A /* GeneralPreferenceView.xib */,
+				FF621FC225CDC09F0068685A /* GeneralPreferenceController.h */,
+				FF621FC325CDC09F0068685A /* GeneralPreferenceController.m */,
+				FF12F7A525CCA9AA002E74BE /* SharedHTTPManager.h */,
+				FF12F7A625CCA9AA002E74BE /* SharedHTTPManager.m */,
+				FF621FB825CDB4AA0068685A /* NSString+HTMLtoNSAttributedString.h */,
+				FF621FB725CDB4AA0068685A /* NSString+HTMLtoNSAttributedString.m */,
+				FF621FB125CDB2D70068685A /* Log.h */,
+				FF621FB025CDB2D70068685A /* Log.m */,
+				FF621FC725CDC1710068685A /* NSBundle+LoginItem.h */,
+				FF621FC825CDC1710068685A /* NSBundle+LoginItem.m */,
+				FF621FCE25CDCA220068685A /* SoftwareUpdatesPref.h */,
+				FF621FCF25CDCA220068685A /* SoftwareUpdatesPref.m */,
+				FF621FD125CDCA290068685A /* SoftwareUpdateView.xib */,
+				F87417FD20D0750700614654 /* Assets.xcassets */,
+				F87417FF20D0750700614654 /* MainMenu.xib */,
+				F85BC43720D08E1E00C58BD9 /* dsa_pub.pem */,
+				F85BC43920D08E2C00C58BD9 /* Sparkle.framework */,
+				FF621FB325CDB48B0068685A /* AFNetworking.framework */,
+				FF12F77F25CC9FEE002E74BE /* MSWeakTimer_macOS.framework */,
+				FF621FBE25CDBF340068685A /* MASPreferences.framework */,
+				FF621FC525CDC12A0068685A /* SAMKeychain.framework */,
+				F8EC907C20D30DA80086F719 /* PFMoveApplication.h */,
+				F8EC907D20D30DA90086F719 /* PFMoveApplication.m */,
+				FF621FBC25CDB52A0068685A /* Info.plist */,
+				F874180320D0750700614654 /* main.m */,
+				F85D494B20D0851600343699 /* EULA.rtf */,
+				F874180520D0750700614654 /* iTunesDiscord.entitlements */,
+				F85D494920D083CD00343699 /* Credits.rtf */,
+			);
+			path = Ongakukiroku;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F87417F620D0750700614654 /* OngakuKiroku */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F874180820D0750700614654 /* Build configuration list for PBXNativeTarget "OngakuKiroku" */;
+			buildPhases = (
+				F87417F320D0750700614654 /* Sources */,
+				F87417F420D0750700614654 /* Frameworks */,
+				F87417F520D0750700614654 /* Resources */,
+				F85D494220D07BE800343699 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OngakuKiroku;
+			productName = iTunesDiscord;
+			productReference = F87417F720D0750700614654 /* OngakuKiroku.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F87417EF20D0750700614654 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Moy IT Solutions";
+				TargetAttributes = {
+					F87417F620D0750700614654 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = F87417F220D0750700614654 /* Build configuration list for PBXProject "OngakuKiroku" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F87417EE20D0750700614654;
+			productRefGroup = F87417F820D0750700614654 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F87417F620D0750700614654 /* OngakuKiroku */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F87417F520D0750700614654 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F85D494C20D0851600343699 /* EULA.rtf in Resources */,
+				F85BC43820D08E1E00C58BD9 /* dsa_pub.pem in Resources */,
+				FF621FC125CDBF3E0068685A /* GeneralPreferenceView.xib in Resources */,
+				F87417FE20D0750700614654 /* Assets.xcassets in Resources */,
+				F85D494820D0838700343699 /* PFAboutWindow.xib in Resources */,
+				FF621FBA25CDB4FC0068685A /* MainMenu.xib in Resources */,
+				F85D494A20D083CD00343699 /* Credits.rtf in Resources */,
+				FF621FBD25CDB52A0068685A /* Info.plist in Resources */,
+				FF621FD225CDCA290068685A /* SoftwareUpdateView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F87417F320D0750700614654 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF621FB225CDB2D70068685A /* Log.m in Sources */,
+				FF621FC425CDC09F0068685A /* GeneralPreferenceController.m in Sources */,
+				FF621FD025CDCA220068685A /* SoftwareUpdatesPref.m in Sources */,
+				FF621FB925CDB4AA0068685A /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				F874180420D0750700614654 /* main.m in Sources */,
+				FF12F7A725CCA9AA002E74BE /* SharedHTTPManager.m in Sources */,
+				F85D494620D0838300343699 /* PFAboutWindowController.m in Sources */,
+				F8EC907E20D30DA90086F719 /* PFMoveApplication.m in Sources */,
+				F87417FC20D0750700614654 /* AppDelegate.m in Sources */,
+				FF621FC925CDC1710068685A /* NSBundle+LoginItem.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F87417FF20D0750700614654 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F874180020D0750700614654 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F874180620D0750700614654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F874180720D0750700614654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F874180920D0750700614654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwinsianMaloja.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 20210205;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iTunesDiscord",
+					"$(PROJECT_DIR)/SwinsianDiscord",
+					"$(PROJECT_DIR)/Ongakukiroku",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Ongakukiroku/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = "1.0-alpha1";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.OngakuKiroku;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F874180A20D0750700614654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwinsianMaloja.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 20210205;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iTunesDiscord",
+					"$(PROJECT_DIR)/SwinsianDiscord",
+					"$(PROJECT_DIR)/Ongakukiroku",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Ongakukiroku/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = "1.0-alpha1";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.OngakuKiroku;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F87417F220D0750700614654 /* Build configuration list for PBXProject "OngakuKiroku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F874180620D0750700614654 /* Debug */,
+				F874180720D0750700614654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F874180820D0750700614654 /* Build configuration list for PBXNativeTarget "OngakuKiroku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F874180920D0750700614654 /* Debug */,
+				F874180A20D0750700614654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F87417EF20D0750700614654 /* Project object */;
+}

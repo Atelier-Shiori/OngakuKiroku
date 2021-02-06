@@ -17,6 +17,7 @@
 #import <MASPreferences/MASPreferences.h>
 #import "GeneralPreferenceController.h"
 #import "SoftwareUpdatesPref.h"
+#import "MusicTrack.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -27,9 +28,8 @@
 @property (strong) PFAboutWindowController *aboutWindowController;
 @property (strong) AFHTTPSessionManager *manager;
 @property (strong) MSWeakTimer *timer;
-@property (strong) NSDictionary *queuedtitle;
+@property (strong) MusicTrack *queuedtrack;
 @property bool timeractive;
-@property bool scrobbled;
 @end
 
 @implementation AppDelegate
@@ -175,8 +175,8 @@
     NSNumber *currentTime = userInfo[@"currentTime"];
     NSNumber *length = userInfo[@"length"];
     NSLog(@"Swinsian - %@ - %@ - %f",userInfo[@"title"], userInfo[@"artist"] , length.floatValue - currentTime.floatValue);
-    if (![self checkedScrobbled:userInfo[@"title"] artist:userInfo[@"artist"]] && length.floatValue > 30) {
-        [self queuescrobble:@{@"title" : userInfo[@"title"], @"artist" : userInfo[@"artist"], @"length" : length} interval:length.floatValue - currentTime.floatValue-5];
+    if (![self checkedScrobbled:userInfo[@"title"] artist:userInfo[@"artist"] album:userInfo[@"album"]] && length.floatValue > 30) {
+        [self queuescrobble:[[MusicTrack alloc] initWithTitle:userInfo[@"title"] withAlbum:userInfo[@"album"] withArtist:userInfo[@"artist"] withDuration:length.floatValue withPos:currentTime.floatValue]];
     }
 }
 - (void)trackPaused:(NSNotification *)myNotification {
@@ -201,15 +201,15 @@
             float pos = [self getMusicPlayerPosition];
             float duration = [self getMusicPlayerDuration];
             NSLog(@"Apple Music - %@ - %@ - %f",info[@"Name"], info[@"Artist"] , duration-pos);
-            if (![self checkedScrobbled:info[@"Name"] artist:info[@"Artist"]] && duration >= 30) {
-                [self queuescrobble:@{@"title" : info[@"Name"], @"artist" : info[@"Artist"], @"length" : @(duration)} interval:duration-pos-5];
+            if (![self checkedScrobbled:info[@"Name"] artist:info[@"Artist"] album:info[@"Album"]] && duration >= 30) {
+                [self queuescrobble:[[MusicTrack alloc] initWithTitle:info[@"Name"] withAlbum:info[@"Album"] withArtist:info[@"Artist"] withDuration:duration withPos:pos]];
             }
         }
         else {
             float duration = [self getiTunesPlayerDuration];
             NSLog(@"iTunes - %@ - %@ - %f",info[@"Name"], info[@"Artist"] , [self convertElaspedTimeToInterval:info[@"elapsedStr"]]);
-            if (![self checkedScrobbled:info[@"Name"] artist:info[@"Artist"]] && duration >= 30) {
-                [self queuescrobble:@{@"title" : info[@"Name"], @"artist" : info[@"Artist"], @"length" : @(duration)} interval:[self convertElaspedTimeToInterval:info[@"elapsedStr"]]-5];
+            if (![self checkedScrobbled:info[@"Name"] artist:info[@"Artist"] album:info[@"Album"]] && duration >= 30) {
+                [self queuescrobble:[[MusicTrack alloc] initWithTitle:info[@"Name"] withAlbum:info[@"Album"] withArtist:info[@"Artist"] withDuration:duration withPos:[self convertElaspedTimeToInterval:info[@"elapsedStr"]]]];
             }
         }
     }
@@ -276,28 +276,33 @@
     return 0;
 }
 
-- (void)queuescrobble:(NSDictionary *)data interval:(float)interval {
+- (void)queuescrobble:(MusicTrack *)data {
     if (![self hasAPIKey]) {
         NSLog(@"Not queuing Scrobble, missing API Key");
         return;
     }
-    _timer =  [MSWeakTimer scheduledTimerWithTimeInterval:interval
+    if ([_queuedtrack.title isEqualToString:data.title] && [_queuedtrack.album isEqualToString:data.album] && [_queuedtrack.artist isEqualToString:data.artist]) {
+        _queuedtrack.currentposition = data.currentposition;
+    }
+    else {
+        _queuedtrack = data;
+    }
+    float elapsedtime = _queuedtrack.duration-_queuedtrack.currentposition;
+    NSLog(@"Queuing title %@ - %@ - %f", _queuedtrack.title, _queuedtrack.artist, elapsedtime);
+    _timer =  [MSWeakTimer scheduledTimerWithTimeInterval:elapsedtime-5
                                                    target:self
                                                  selector:@selector(fireTimer)
                                                  userInfo:nil
                                                   repeats:YES
                                             dispatchQueue:_privateQueue];
     _timeractive = YES;
-    _scrobbled = NO;
-    _queuedtitle = data;
-    NSLog(@"Queuing title %@ - %@ - %f", data[@"title"], data[@"artist"], interval);
-    [self setNowPlaying:data[@"title"] artist:data[@"artist"]];
+    [self setNowPlaying:_queuedtrack.title artist:_queuedtrack.artist];
 }
 
 - (void)fireTimer {
     _timeractive = NO;
     // toggle
-    [self scrobble:_queuedtitle[@"title"] artist:_queuedtitle[@"artist"] length:((NSNumber *)_queuedtitle[@"length"]).intValue];
+    [self scrobble:_queuedtrack.title artist:_queuedtrack.artist length:_queuedtrack.duration];
 }
 
 - (void)stoptimer {
@@ -311,15 +316,15 @@
 - (void)scrobble:(NSString *)title artist:(NSString *)artist length:(int)length {
     [_manager POST:[NSString stringWithFormat:@"%@/apis/mlj_1/newscrobble", [NSUserDefaults.standardUserDefaults valueForKey:@"serverurl"]] parameters:@{@"title" : title, @"artist" : artist, @"key" : [SAMKeychain passwordForService:[NSString stringWithFormat:@"%@", NSBundle.mainBundle.infoDictionary[@"CFBundleName"]] account:@"defaultAccount"], @"seconds" : @(length) } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"Scrobble Successful: %@ - %@", title, artist);
-        _scrobbled = YES;
+        _queuedtrack.scrobbled = YES;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Scrobble Unsuccessful: %@", error.localizedDescription);
     }];
 }
 
-- (bool)checkedScrobbled:(NSString *)title artist: (NSString *)artist {
-    if (_scrobbled && _queuedtitle) {
-        if ([title isEqualToString:_queuedtitle[@"title"]] && [artist isEqualToString:_queuedtitle[@"artist"]]) {
+- (bool)checkedScrobbled:(NSString *)title artist:(NSString *)artist album:(NSString *)album {
+    if (_queuedtrack.scrobbled && _queuedtrack) {
+        if ([title isEqualToString:_queuedtrack.title] && [artist isEqualToString:_queuedtrack.album] && [album isEqualToString:_queuedtrack.album]) {
             return YES;
         }
     }

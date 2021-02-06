@@ -37,6 +37,7 @@
 		FF621FCD25CDC9720068685A /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF621FC525CDC12A0068685A /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF621FD025CDCA220068685A /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = FF621FCF25CDCA220068685A /* SoftwareUpdatesPref.m */; };
 		FF621FD225CDCA290068685A /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF621FD125CDCA290068685A /* SoftwareUpdateView.xib */; };
+		FFFD990225CEDF5F00F27DB3 /* MusicTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD990125CEDF5F00F27DB3 /* MusicTrack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,6 +94,8 @@
 		FF621FCE25CDCA220068685A /* SoftwareUpdatesPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdatesPref.h; sourceTree = "<group>"; };
 		FF621FCF25CDCA220068685A /* SoftwareUpdatesPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdatesPref.m; sourceTree = "<group>"; };
 		FF621FD125CDCA290068685A /* SoftwareUpdateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoftwareUpdateView.xib; sourceTree = "<group>"; };
+		FFFD990025CEDF5F00F27DB3 /* MusicTrack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicTrack.h; sourceTree = "<group>"; };
+		FFFD990125CEDF5F00F27DB3 /* MusicTrack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicTrack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,8 @@
 				F85D494B20D0851600343699 /* EULA.rtf */,
 				F874180520D0750700614654 /* iTunesDiscord.entitlements */,
 				F85D494920D083CD00343699 /* Credits.rtf */,
+				FFFD990025CEDF5F00F27DB3 /* MusicTrack.h */,
+				FFFD990125CEDF5F00F27DB3 /* MusicTrack.m */,
 			);
 			path = Ongakukiroku;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				FF621FB225CDB2D70068685A /* Log.m in Sources */,
 				FF621FC425CDC09F0068685A /* GeneralPreferenceController.m in Sources */,
 				FF621FD025CDCA220068685A /* SoftwareUpdatesPref.m in Sources */,
+				FFFD990225CEDF5F00F27DB3 /* MusicTrack.m in Sources */,
 				FF621FB925CDB4AA0068685A /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				F874180420D0750700614654 /* main.m in Sources */,
 				FF12F7A725CCA9AA002E74BE /* SharedHTTPManager.m in Sources */,

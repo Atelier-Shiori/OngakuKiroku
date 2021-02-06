@@ -96,6 +96,7 @@
 		FF621FD125CDCA290068685A /* SoftwareUpdateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoftwareUpdateView.xib; sourceTree = "<group>"; };
 		FFFD990025CEDF5F00F27DB3 /* MusicTrack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicTrack.h; sourceTree = "<group>"; };
 		FFFD990125CEDF5F00F27DB3 /* MusicTrack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicTrack.m; sourceTree = "<group>"; };
+		FFFD990A25CEE94300F27DB3 /* Ongakukiroku_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ongakukiroku_Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +171,7 @@
 				F85D494920D083CD00343699 /* Credits.rtf */,
 				FFFD990025CEDF5F00F27DB3 /* MusicTrack.h */,
 				FFFD990125CEDF5F00F27DB3 /* MusicTrack.m */,
+				FFFD990A25CEE94300F27DB3 /* Ongakukiroku_Prefix.pch */,
 			);
 			path = Ongakukiroku;
 			sourceTree = "<group>";
@@ -407,6 +409,8 @@
 					"$(PROJECT_DIR)/SwinsianDiscord",
 					"$(PROJECT_DIR)/Ongakukiroku",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OngakuKiroku/Ongakukiroku_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Ongakukiroku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MARKETING_VERSION = "1.0-alpha1";
@@ -431,6 +435,8 @@
 					"$(PROJECT_DIR)/SwinsianDiscord",
 					"$(PROJECT_DIR)/Ongakukiroku",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OngakuKiroku/Ongakukiroku_Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Ongakukiroku/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MARKETING_VERSION = "1.0-alpha1";

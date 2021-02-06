@@ -12,7 +12,6 @@
 #import <AFNetworking/AFNetworking.h>
 #import "SharedHTTPManager.h"
 #import <MSWeakTimer_macOS/MSWeakTimer.h>
-#import "Log.h"
 #import <SAMKeychain/SAMKeychain.h>
 #import <MASPreferences/MASPreferences.h>
 #import "GeneralPreferenceController.h"
@@ -324,7 +323,7 @@
 
 - (bool)checkedScrobbled:(NSString *)title artist:(NSString *)artist album:(NSString *)album {
     if (_queuedtrack.scrobbled && _queuedtrack) {
-        if ([title isEqualToString:_queuedtrack.title] && [artist isEqualToString:_queuedtrack.album] && [album isEqualToString:_queuedtrack.album]) {
+        if ([title isEqualToString:_queuedtrack.title] && [artist isEqualToString:_queuedtrack.artist] && [album isEqualToString:_queuedtrack.album]) {
             return YES;
         }
     }

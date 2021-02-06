@@ -16,7 +16,7 @@ void append(NSString *msg){
         || !clearlogdate || (clearlogdate && [clearlogdate timeIntervalSinceNow] <= 0)){
         fprintf(stderr,"Creating new log file at %s",[path UTF8String]);
         [[NSData data] writeToFile:path atomically:YES];
-        [NSUserDefaults.standardUserDefaults setValue:[NSDate dateWithTimeIntervalSinceNow:1209600] forKey:@"NextLogClearDate"];
+        [NSUserDefaults.standardUserDefaults setValue:[NSDate dateWithTimeIntervalSinceNow:172800] forKey:@"NextLogClearDate"];
     }
     NSFileHandle *handle = [NSFileHandle fileHandleForWritingAtPath:path];
     [handle truncateFileAtOffset:[handle seekToEndOfFile]];
@@ -61,7 +61,7 @@ void _Log(NSString *prefix, const char *file, int lineNumber, const char *funcNa
 + (void)openLogFile {
     NSString *path = [self retrieveApplicationSupportDirectory:@""];
     NSFileManager *filemanger = [NSFileManager defaultManager];
-    NSString *fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@.log",path, [NSBundle mainBundle].infoDictionary[@"CFBundleName"]];
+    NSString *fullfilenamewithpath = [NSString stringWithFormat:@"%@/Onkakukiroku.log",path];
     if (![filemanger fileExistsAtPath:fullfilenamewithpath]) {
         return;
     }

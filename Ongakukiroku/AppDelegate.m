@@ -292,7 +292,7 @@
                                                    target:self
                                                  selector:@selector(fireTimer)
                                                  userInfo:nil
-                                                  repeats:YES
+                                                  repeats:NO
                                             dispatchQueue:_privateQueue];
     _timeractive = YES;
     [self setNowPlaying:_queuedtrack.title artist:_queuedtrack.artist];

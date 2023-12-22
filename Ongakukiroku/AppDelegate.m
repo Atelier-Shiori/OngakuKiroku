@@ -351,6 +351,9 @@
             NSLog(@"Scrobble Successful: %@ - %@", title, artist);
             _queuedtrack.scrobbled = YES;
         }
+        else {
+            NSLog(@"Set as Mow Playing: %@ - %@", title, artist);
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Scrobble Unsuccessful: %@", error.localizedDescription);
         NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];

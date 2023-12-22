@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) IBOutlet NSTextField *apikey;
 @property (strong) IBOutlet NSButton *saveButton;
 @property (strong) IBOutlet NSButton *clearButton;
+@property (strong) IBOutlet NSTextField *lapikey;
+@property (strong) IBOutlet NSButton *lsaveButton;
+@property (strong) IBOutlet NSButton *lclearButton;
 @end
 
 NS_ASSUME_NONNULL_END

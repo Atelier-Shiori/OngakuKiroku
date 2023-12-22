@@ -26,7 +26,9 @@
 @property (strong) NSImage *statusImage;
 @property (strong) PFAboutWindowController *aboutWindowController;
 @property (strong) AFHTTPSessionManager *manager;
+@property (strong) AFHTTPSessionManager *lmanager;
 @property (strong) MSWeakTimer *timer;
+@property (strong) MSWeakTimer *ntimer;
 @property (strong) MusicTrack *queuedtrack;
 @property bool timeractive;
 @end
@@ -50,7 +52,8 @@
 
 - (void) awakeFromNib {
     _manager = [SharedHTTPManager httpmanager];
-    
+    _lmanager = [SharedHTTPManager httpmanager];
+    _lmanager.requestSerializer = [AFJSONRequestSerializer serializer];
     _privateQueue = dispatch_queue_create("moe.malupdaterosx.ongakukiroku", DISPATCH_QUEUE_CONCURRENT);
     
     
@@ -111,17 +114,17 @@
             if (@available(macOS 10.5, *)) {
                 NSLog(@"Setting Observer for Music");
                 [center addObserver:self
-                       selector:@selector(playerInfoChanged:)
-                           name:@"com.apple.Music.playerInfo"
-                         object:nil];
+                           selector:@selector(playerInfoChanged:)
+                               name:@"com.apple.Music.playerInfo"
+                             object:nil];
                 [self getMusicPlayerDuration];
             }
             else {
                 NSLog(@"Setting Observer for iTunes");
                 [center addObserver:self
-                selector:@selector(playerInfoChanged:)
-                    name:@"com.apple.iTunes.playerInfo"
-                  object:nil];
+                           selector:@selector(playerInfoChanged:)
+                               name:@"com.apple.iTunes.playerInfo"
+                             object:nil];
                 [self getiTunesPlayerDuration];
             }
             break;
@@ -163,8 +166,8 @@
     [copyrightstr appendFormat:@"%@",bundleDict[@"NSHumanReadableCopyright"]];
     (self.aboutWindowController).appCopyright = [[NSAttributedString alloc] initWithString:copyrightstr
                                                                                 attributes:@{
-                                                                                             NSForegroundColorAttributeName:[NSColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f],
-                                                                                             NSFontAttributeName:[NSFont fontWithName:[NSFont systemFontOfSize:12.0f].familyName size:11]}];
+        NSForegroundColorAttributeName:[NSColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f],
+        NSFontAttributeName:[NSFont fontWithName:[NSFont systemFontOfSize:12.0f].familyName size:11]}];
     
     [self.aboutWindowController showWindow:nil];
 }
@@ -296,13 +299,32 @@
                                             dispatchQueue:_privateQueue];
     _timeractive = YES;
     [self setNowPlaying:_queuedtrack.title artist:_queuedtrack.artist];
+    _ntimer =  [MSWeakTimer scheduledTimerWithTimeInterval:10
+                                                   target:self
+                                                 selector:@selector(nfireTimer)
+                                                 userInfo:nil
+                                                  repeats:NO
+                                            dispatchQueue:_privateQueue];
 }
 
 - (void)fireTimer {
     _timeractive = NO;
     // toggle
-    [self scrobble:_queuedtrack.title artist:_queuedtrack.artist length:_queuedtrack.duration];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"enablemaioja"]) {
+        [self scrobble:_queuedtrack.title artist:_queuedtrack.artist length:_queuedtrack.duration];
+    }
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"enablelistenbrainz"]) {
+        [self lscrobble:_queuedtrack.title artist:_queuedtrack.artist album:_queuedtrack.album pos:_queuedtrack.currentposition scrobbling:YES];
+    }
 }
+
+- (void)nfireTimer {
+    // toggle
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"enablelistenbrainz"]) {
+        [self lscrobble:_queuedtrack.title artist:_queuedtrack.artist album:_queuedtrack.album pos:_queuedtrack.currentposition scrobbling:NO];
+    }
+}
+
 
 - (void)stoptimer {
     if (_timeractive) {
@@ -318,6 +340,21 @@
         _queuedtrack.scrobbled = YES;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Scrobble Unsuccessful: %@", error.localizedDescription);
+    }];
+
+}
+
+- (void)lscrobble:(NSString *)title artist:(NSString *)artist album:album pos:(float)pos scrobbling:(bool)isscrobbling {
+    [_lmanager.requestSerializer setValue:[NSString stringWithFormat:@"Token %@", [SAMKeychain passwordForService:[NSString stringWithFormat:@"%@ - ListenBrainz", NSBundle.mainBundle.infoDictionary[@"CFBundleName"]] account:@"defaultAccount"]] forHTTPHeaderField:@"Authorization"];
+    [_lmanager POST:@"https://api.listenbrainz.org/1/submit-listens" parameters:@{@"listen_type" : isscrobbling ? @"single" : @"playing_now", @"payload" : isscrobbling ? @[@{@"listened_at" : @(NSDate.date.timeIntervalSince1970), @"track_metadata" : @{@"artist_name" : artist, @"track_name" : title, @"release_name" : album }}] : @[@{@"track_metadata" : @{@"artist_name" : artist, @"track_name" : title, @"release_name" : album }}]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (isscrobbling) {
+            NSLog(@"Scrobble Successful: %@ - %@", title, artist);
+            _queuedtrack.scrobbled = YES;
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Scrobble Unsuccessful: %@", error.localizedDescription);
+        NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+       NSLog(@"%@",errResponse);
     }];
 }
 
@@ -352,6 +389,7 @@
 
 - (bool)hasAPIKey {
     NSArray *accounts = [SAMKeychain accountsForService:[NSString stringWithFormat:@"%@", NSBundle.mainBundle.infoDictionary[@"CFBundleName"]]];
-    return accounts.count > 0;
+    NSArray *laccounts = [SAMKeychain accountsForService:[NSString stringWithFormat:@"%@ - ListenBrainz", NSBundle.mainBundle.infoDictionary[@"CFBundleName"]]];
+    return accounts.count > 0 | laccounts.count > 0;
 }
 @end

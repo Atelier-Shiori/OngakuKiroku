@@ -70,12 +70,28 @@
     else {
         _apikey.stringValue = @"";
     }
+    bool laccountsexist = [self haslAPIKey];
+    _lsaveButton.enabled = !laccountsexist;
+    _lapikey.enabled = !laccountsexist;
+    _lclearButton.enabled = laccountsexist;
+    if (laccountsexist) {
+        _lapikey.stringValue = [SAMKeychain passwordForService:[NSString stringWithFormat:@"%@ - ListenBrainz", NSBundle.mainBundle.infoDictionary[@"CFBundleName"]] account:@"defaultAccount"];
+    }
+    else {
+        _lapikey.stringValue = @"";
+    }
 }
 
 - (bool)hasAPIKey {
     NSArray *accounts = [SAMKeychain accountsForService:[NSString stringWithFormat:@"%@", NSBundle.mainBundle.infoDictionary[@"CFBundleName"]]];
     return accounts.count > 0;
 }
+
+- (bool)haslAPIKey {
+    NSArray *accounts = [SAMKeychain accountsForService:[NSString stringWithFormat:@"%@ - ListenBrainz", NSBundle.mainBundle.infoDictionary[@"CFBundleName"]]];
+    return accounts.count > 0;
+}
+
 
 - (void)saveAccountToKeychain:(NSString *)apiKey {
     if (_apikey.stringValue.length == 0) {
@@ -95,6 +111,27 @@
 }
 
 - (IBAction)clearAccount:(id)sender {
+    [self removeAccountFromKeychain];
+}
+
+- (void)savelAccountToKeychain:(NSString *)apiKey {
+    if (_lapikey.stringValue.length == 0) {
+        [self showsheetmessage:@"Invalid API Key" explaination:@"Please specify a valid API key and try again" window:self.view.window];
+        return;
+    }
+    [SAMKeychain setPassword:apiKey forService:[NSString stringWithFormat:@"%@ - ListenBrainz", NSBundle.mainBundle.infoDictionary[@"CFBundleName"]] account:@"defaultAccount"];
+    [self setAccountButtonState];
+}
+- (void)removelAccountFromKeychain {
+    [SAMKeychain deletePasswordForService:[NSString stringWithFormat:@"%@ - ListenBrainz", NSBundle.mainBundle.infoDictionary[@"CFBundleName"]] account:@"defaultAccount"];
+    [self setAccountButtonState];
+}
+
+- (IBAction)savelAccount:(id)sender {
+    [self savelAccountToKeychain:_lapikey.stringValue];
+}
+
+- (IBAction)clearlAccount:(id)sender {
     [self removeAccountFromKeychain];
 }
 
